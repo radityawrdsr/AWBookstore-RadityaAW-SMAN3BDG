@@ -1,452 +1,552 @@
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Map</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        color: #fff;
+        background-color: rgb(255, 255, 255);
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Map</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <style>
-    body {
-      color: #fff;
-      background-color: rgb(255, 255, 255)
-    }
+      .service-card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 800px;
+        margin: auto;
+      }
 
-    .service-card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 800px;
-      margin: auto;
-    }
+      .service-card {
+        width: 300px;
+        height: 200px;
+        margin: 10px;
+      }
 
-    .service-card {
-      width: 300px;
-      height: 200px;
-      margin: 10px;
-    }
+      .bg-custom-1 {
+        background-color: #7c4613;
+      }
 
-    .bg-custom-1 {
-      background-color: #7c4613;
-    }
+      .bg-custom-2 {
+        background-image: linear-gradient(180deg, #4e2702 0%, #975416 100%);
+      }
 
-    .bg-custom-2 {
-      background-image: linear-gradient(180deg, #4e2702 0%, #975416 100%);
-    }
+      .bg-custom-3 {
+        background-image: linear-gradient(60deg, #4e2702 0%, #975416 100%);
+      }
 
-    .bg-custom-3 {
-      background-image: linear-gradient(60deg, #4e2702 0%, #975416 100%);
-    }
+      button:hover {
+        cursor: pointer;
+        background-color: rgb(169, 204, 12);
+        transform: scale(1.1);
+      }
 
+      /* begin */
+      .navbar {
+        background-color: #943838;
+      }
 
-    button:hover {
-      cursor: pointer;
-      background-color: rgb(169, 204, 12);
-      transform: scale(1.1);
-    }
+      .navbar a:not(.dropdown-item) {
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 15px;
+        position: relative;
+      }
 
-    /* begin */
-    .navbar {
-      background-color: #943838;
-    }
+      .navbar a:not(.dropdown-toggle):after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        background-color: #fff;
+        transition: all 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+      }
 
-    .navbar a:not(.dropdown-item) {
-      color: #fff;
-      text-decoration: none;
-      display: inline-block;
-      padding: 10px 15px;
-      position: relative;
-    }
+      .navbar a:hover,
+      .navbar a.active {
+        color: rgb(146, 51, 255);
+      }
 
-    .navbar a:not(.dropdown-toggle):after {
-      background: none repeat scroll 0 0 transparent;
-      bottom: 0;
-      content: '';
-      display: block;
-      height: 2px;
-      left: 50%;
-      position: absolute;
-      background-color: #fff;
-      transition: all 0.3s ease 0s, left 0.3s ease 0s;
-      width: 0;
-    }
+      .navbar a:not(.dropdown-toggle):not(.navbar-brand):hover:after,
+      .navbar a:not(.dropdown-toggle):not(.navbar-brand):active:after,
+      .navbar a.active:not(.dropdown-toggle):after {
+        background-color: rgb(218, 231, 39);
+        width: 100%;
+        left: 0;
+      }
 
-    .navbar a:hover,
-    .navbar a.active {
-      color: rgb(146, 51, 255);
-    }
+      /* end */
+      .color-black {
+        color: black;
+      }
+    </style>
+  </head>
 
-    .navbar a:not(.dropdown-toggle):not(.navbar-brand):hover:after,
-    .navbar a:not(.dropdown-toggle):not(.navbar-brand):active:after,
-    .navbar a.active:not(.dropdown-toggle):after {
-      background-color: rgb(218, 231, 39);
-      width: 100%;
-      left: 0;
-    }
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-custom-2">
+      <!-- Navbar dan logo euy -- Salah container, sy edit inline style aja, biar gak ada yg rusak css stylesheetsnya-->
+      <a
+        class="navbar-brand color=bg-dark"
+        href="#"
+        style="display: flex; align-items: flex-end"
+      >
+        <img
+          style="margin: 0 12px 5px 0"
+          src="img/A (1).png"
+          alt=""
+          width="25px"
+          height="25px"
+          class="rounded-circle"
+        />
+        <span style="font-style: italic; font-size: 1.5em">AW Bookstore</span>
+      </a>
 
-    /* end */
-    .color-black {
-      color: black;
-    }
-  </style>
-</head>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<body>
+      <div
+        class="collapse navbar-collapse justify-content-md-end justify-content-center"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav" style="text-align: right">
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Catalogue"> Catalogue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Order"> Order Now</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#About"> About</a></li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-custom-2">
-    <!-- Navbar dan logo euy -- Salah container, sy edit inline style aja, biar gak ada yg rusak css stylesheetsnya-->
-    <a class="navbar-brand color=bg-dark" href="#" style="display: flex; align-items: flex-end;">
-      <img style="margin: 0 12px 5px 0;" src="img/A (1).png" alt="" width="25px" height="25px" class="rounded-circle">
-      <span style="font-style: italic; font-size: 1.5em;">AW Bookstore</span>
-    </a>
+    <div
+      class="jumbotron"
+      style="background-image: url(img/fotoperpus.jpg); margin-bottom: auto"
+    >
+      <div class="container text-center">
+        <img
+          src="img/A.png"
+          alt="Logo AW BOOKSHOP"
+          width="25%"
+          style="margin-top: 50; margin-bottom: 20px"
+          class="rounded-circle"
+        />"
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <h1 class="display-4">AW BOOKSTORE</h1>
+        <p class="lead">Selamat datang di situs resmi AW BOOKSTORE</p>
+      </div>
+    </div>
 
-    <div class="collapse navbar-collapse justify-content-md-end justify-content-center" id="navbarSupportedContent">
-      <ul class="navbar-nav" style="text-align: right;">
-        <li class="nav-item"><a class="nav-link" href=""> Home <span class="sr-only">(current)</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="#Catalogue"> Catalogue</a></li>
-        <li class="nav-item"><a class="nav-link" href="#Order"> Order Now</a></li>
-        <li class="nav-item"><a class="nav-link" href="#About"> About</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
+    <p
+      style="
+        font-size: 30px;
+        text-align: center;
+        font: italic;
+        margin: 50px;
+        color: rgb(46, 92, 16);
+      "
+    >
+      “If you don’t like to read, you haven’t found the right book.”
+    </p>
+    <h2
+      style="
+        font-size: 30px;
+        text-align: center;
+        font: italic;
+        margin: 50px;
+        color: rgb(34, 5, 102);
+      "
+    >
+      J. K. Rowling- Author of <i> Harry Potter</i>
+    </h2>
+    <div class="card text-white bg-dark mb-3" style="max-width: 30fr">
+      <div style="background-color: rgb(92, 71, 71)">
+        <div class="row">
+          <div class="col text-left" style="margin: 20">
+            <h3>⚫ What kind of book do you like?</h3>
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 20; margin-top: 20">
+          <div class="col text-center">
+            <button type="button" class="btn-lg btn-primary">Fiction</button>
+            <button type="button" class="btn-lg btn-secondary">Islamic</button>
+            <button type="button" class="btn-lg btn-success">History</button>
+            <button type="button" class="btn-lg btn-danger">Biography</button>
+            <button type="button" class="btn-lg btn-warning">Novel</button>
+            <button type="button" class="btn-lg btn-light">Serials</button>
+          </div>
+        </div>
+      </div>
+      <div style="background-color: rgb(92, 71, 71)">
+        <div class="row">
+          <div class="col text-right" style="margin-right: 25; color: white">
+            <h3 style="font: italic">AW Bookstore ⚫</h3>
+          </div>
+        </div>
+
+        <div class="row" style="margin: 20">
+          <div class="col text-left;">
+            <h4 style="text-align: right; color: wheat">
+              AW Bookstore is the new-era of online bookstore. <br />
+              We provide international and local Indonesian books. <br />
+              With a competitive price, and a convenient method of shopping,<br />
+              We are proud to serve you.<br />
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="Catalogue"
+        class="container-fluid"
+        style="color: black; background-color: rgb(255, 255, 255)"
+      >
+        <h1 style="text-align: center; margin-top: 20">Catalogue <br /></h1>
+        <br />
+
+        <div class="row row-cols-4" style="color: white">
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row row-cols-4">
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row row-cols-4">
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                No matter your goals, Atomic Habits offers a proven framework
+                for improving--every day. James Clear, one of the world's
+                leading experts on habit formation, reveals practical strategies
+                that will teach you exactly how to form good habits, break bad
+                ones, and master the tiny behaviors that lead to remarkable
+                results.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                Delivered with warmth, clarity, and humor, this brief work is
+                the closest Einstein ever came to writing an autobiography.
+                Although a very personal account, it is concerned solely with
+                the development of his ideas, saying little about his private
+                life or about the world-shaking events through which he lived.
+                Includes parallel German and English texts
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <img src="img/buku sherlock.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Vumvumvoq</h5>
+              <p class="card-text">
+                No home library is complete without the classics! The Adventures
+                of Sherlock Holmes and Other Stories brings together the
+                essential works from Arthur Conan Doyle in an elegant,
+                leather-bound, omnibus edition—a keepsake to be read and
+                treasured.
+              </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="Order" class="card text-white bg-custom-3">
+      <h3 class="card-header" style="font-family: Verdana">How to Order</h3>
+
+      <p
+        style="
+          text-align: center;
+          font-size: larger;
+          margin-top: 15px;
+          font-family: sans-serif;
+        "
+      ></p>
+
+      <table style="width: 100%" class="col text-center">
+        <tr>
+          <th>Steps</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>
+            1. Stroll around our website to look for best books.<br />
+            2. Click the button below and we'll direct you to <br />
+            our customer service<br />
+            3. Chat with our admin and feel free to ask!
+          </td>
+          <td>
+            If you don't find the <br />
+            book you're looking for,<br />
+            you can ask us on Instagram's <br />or message us through
+            <a
+              href="https://api.whatsapp.com/send?phone=6282117557373&text=Halo%20Kak,%20Apakah%20buku%20...%20tersedia%20?"
+              style="color: rgb(251, 255, 0)"
+            >
+              WhatsApp</a
+            >
+          </td>
+        </tr>
+      </table>
+
+      <div id="About" class="col text-center bg-dark;">
+        <button type="button" class="btn btn-secondary">
+          <a
+            href="https://api.whatsapp.com/send?phone=6282117557373&text=Halo%20Kak,%20Saya%20ingin%20...%20beli%20buku%20..."
+            style="color: mediumturquoise"
+          >
+            <h1>I WANT TO PURCHASE NOW!</h1>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-
-  <div class="jumbotron " style="background-image:url(img/fotoperpus.jpg);margin-bottom: auto">
-    <div class="container text-center">
-      <img src="img/A.png" alt="Logo AW BOOKSHOP" width="25%" style="margin-top: 50; margin-bottom: 20px;"
-        class=rounded-circle>"
-
-      <h1 class="display-4">AW BOOKSTORE</h1>
-      <p class="lead">Selamat datang di situs resmi AW BOOKSTORE</p>
-    </div>
-  </div>
-
-
-  <P style="font-size:30px;text-align: center;font:italic; margin: 50px;color: rgb(46, 92, 16);"> “If you don’t like to
-    read, you haven’t found the right book.” </P>
-  <h2 style="font-size:30px;text-align: center;font:italic; margin: 50px;color: rgb(34, 5, 102);"> J. K. Rowling- Author
-    of <i> Harry Potter</i></h2>
-  <div class="card text-white bg-dark mb-3" style="max-width: 30fr;">
-
-
-
-    <div style="background-color: rgb(92, 71, 71);">
-      <div class="row">
-        <div class="col text-left" style="margin:20">
-          <h3> ⚫ What kind of book do you like? </h3>
-        </div>
-      </div>
-
-      <div class="row" style="margin-bottom: 20;margin-top:20">
-        <div class="col text-center">
-          <button type="button" class="btn-lg btn-primary">Fiction</button>
-          <button type="button" class="btn-lg btn-secondary">Islamic</button>
-          <button type="button" class="btn-lg btn-success">History</button>
-          <button type="button" class="btn-lg btn-danger">Biography</button>
-          <button type="button" class="btn-lg btn-warning">Novel</button>
-          <button type="button" class="btn-lg btn-light">Serials</button>
-        </div>
-
-      </div>
-    </div>
-    <div style="background-color: rgb(92, 71, 71);">
-      <div class="row">
-        <div class="col text-right" style="margin-right: 25;color: white;">
-          <h3 style="font: italic;"> AW Bookstore ⚫ </h3>
-        </div>
-      </div>
-
-      <div class="row" style="margin: 20;">
-        <div class="col text-left;">
-          <h4 style="text-align:right;color:wheat;">
-            AW Bookstore is the new-era of online bookstore. <br>
-            We provide international and local Indonesian books. <BR>
-            With a competitive price, and a convenient method of shopping,<br>
-            We are proud to serve you.<br>
-          </h4>
-        </div>
-
+        </button>
       </div>
     </div>
 
+    <div>
+      <div
+        class="container-fluid"
+        style="
+          background-color: rgb(0, 0, 0);
+          font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          text-align: center;
+        "
+      >
+        <h1 style="margin-bottom: 20px"><br />About</h1>
+        <img src="img/FOTO GUE.png" class="rounded-circle" />
+        <h3 style="text-align: center; margin-top: 20px; color: coral">
+          Developer
+        </h3>
+        <p>
+          Raditya Aryatama Wiradisuria
+          <br />
+          XI MIPA 2 <br />
+          28<br />
+        </p>
 
-
-    <div id="Catalogue" class="container-fluid" style=" color:black;background-color:  rgb(255, 255, 255);">
-      <h1 style="text-align:center;margin-top:20"> Catalogue <br> </h1>
-      <br>
-
-      <div class="row row-cols-4" style="color: white;">
-
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
+        <div
+          id="Contact"
+          class="container-fluid"
+          style="
+            background-color: black;
+            font-family: 'Times New Roman', Times, serif;
+          "
+        >
+          <h2 style="color: rgb(255, 159, 80)">Contact</h2>
+          <p>
+            Instagram @awbookstore <br />
+            Whatsapp +6282117557373<br />
+            LINE @93ENT9Dz <br />
+            <br />
+          </p>
         </div>
 
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
+        <div
+          class="container-fluid"
+          style="
+            background-color: black;
+            font-family: 'Times New Roman', Times, serif;
+          "
+        >
+          <h2 style="color: rgb(255, 194, 80)">References</h2>
+          <p>
+            Book Images:<br />
+            https://www.amazon.com/Adventures-Sherlock-Holmes-Other-Stories/dp/1607102110
+            <br />
+            https://www.goodreads.com/book/show/499091.Autobiographical_Notes<br />
+            https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299<br />
+            Logo: made by me using Canva.<br />
+            Website used for content:<br />
+            Bootstrap.com <br />
+            W3schools.com <br />
+            <br />
+          </p>
         </div>
-
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
-        </div>
-
       </div>
 
-
-
-      <div class="row row-cols-4">
-
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="row row-cols-4">
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">No matter your goals, Atomic Habits
-              offers a proven framework for improving--every day.
-              James Clear, one of the world's leading experts on
-              habit formation, reveals practical strategies that
-              will teach you exactly how to form good habits,
-              break bad ones, and master the tiny behaviors
-              that lead to remarkable results.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Delivered with warmth, clarity, and humor,
-              this brief work is the closest Einstein ever came to writing
-              an autobiography. Although a very personal account, it is
-              concerned solely with the development of his ideas,
-              saying little about his private life or about the
-              world-shaking events through which he lived.
-              Includes parallel German and English texts</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
-        </div>
-
-
-        <div class="card" style="width: 18rem;">
-          <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">No home library is complete without the classics!
-              The Adventures of Sherlock Holmes and Other Stories brings
-              together the essential works from Arthur Conan Doyle in an
-              elegant, leather-bound, omnibus edition—a keepsake to be read and treasured.</p>
-            <a href="#" class="btn btn-primary">View more</a>
-          </div>
-        </div>
-
+      <div class="container-fluid" style="color: black">
+        <h5 style="text-align: center">
+          <br />
+          Copyright 2021 <b> ©AW Bookstore.</b> All rights reserved. <br />
+          <br />
+        </h5>
       </div>
     </div>
-  </div>
-  </div>
 
-
-  <div id="Order" class="card text-white bg-custom-3">
-    <h3 class="card-header" style="font-family: Verdana;">How to Order</h3>
-
-    <p style="text-align: center;font-size: larger;margin-top: 15px;
-        font-family: sans-serif;">
-
-    <table style="width:100%" class="col text-center">
-      <tr>
-        <th>Steps</th>
-        <th>Notes</th>
-      </tr>
-      <tr>
-        <td>1. Stroll around our website to
-          look for best books.<br>
-          2. Click the button below and we'll direct you
-          to <br> our customer service<br>
-          3. Chat with our admin and feel free to ask!
-        </td>
-        <td> If you don't find the <br>
-          book you're looking for,<br>
-          you can ask us on Instagram's <br>or message us
-          through <a
-            href="https://api.whatsapp.com/send?phone=6282117557373&text=Halo%20Kak,%20Apakah%20buku%20...%20tersedia%20?"
-            style="color:rgb(251, 255, 0);">
-            WhatsApp</a></td>
-      </tr>
-
-    </table>
-    </p>
-
-    <div id="About" class="col text-center bg-dark;">
-
-      <button type="button" class="btn btn-secondary">
-        <a href="https://api.whatsapp.com/send?phone=6282117557373&text=Halo%20Kak,%20Saya%20ingin%20...%20beli%20buku%20..."
-          style="color:mediumturquoise;">
-          <h1>I WANT TO PURCHASE NOW!</h1>
-        </a></button>
-
-
-
-
-
-    </div>
-    </p>
-  </div>
-  </div>
-  </div>
-
-
-
-
-
-
-
-
-  <div>
-    <div class="container-fluid" style="background-color: rgb(0, 0, 0);
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;text-align: center;">
-      <h1 style="margin-bottom: 20px;"><br>About</h1>
-      <img src="img/FOTO GUE.png" class="rounded-circle">
-      <h3 style="text-align: center;margin-top: 20px;color: coral;"> Developer</h3>
-      <p> Raditya Aryatama Wiradisuria
-        <BR>
-        XI MIPA 2 <BR>
-        28<BR>
-
-      <div id="Contact" class="container-fluid"
-        style="background-color: black;font-family: 'Times New Roman', Times, serif;">
-        <h2 style="color: rgb(255, 159, 80);">Contact</h2>
-        <P> Instagram @awbookstore <BR>
-          Whatsapp +6282117557373<BR>
-          LINE @93ENT9Dz <br>
-          <br>
-        </P>
-      </div>
-
-
-      <div class="container-fluid" style="background-color: black;font-family: 'Times New Roman', Times, serif;">
-        <h2 style="color: rgb(255, 194, 80);">References</h2>
-        <P> Book Images:<br>
-          https://www.amazon.com/Adventures-Sherlock-Holmes-Other-Stories/dp/1607102110 <BR>
-          https://www.goodreads.com/book/show/499091.Autobiographical_Notes<BR>
-          https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299<br>
-          Logo: made by me using Canva.<br>
-          Website used for content:<br>
-          Bootstrap.com <br>
-          W3schools.com <br>
-          <br>
-        </P>
-      </div>
-
-    </div>
-
-    <div class="container-fluid" style="color: black;">
-      <h5 style="text-align: center;"><br> Copyright 2021 <b> ©AW Bookstore.</b> All rights reserved.
-        <br> <br>
-      </h5>
-    </div>
-
-
-  </div>
-
-  <!-- Script yang kamu import salah-->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-
+    <!-- Script yang kamu import salah-->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
