@@ -45,6 +45,11 @@
       background-image: linear-gradient(180deg, #4e2702 0%, #975416 100%);
     }
 
+    .bg-custom-3 {
+      background-image: linear-gradient(60deg, #4e2702 0%, #975416 100%);
+    }
+
+
     button:hover {
       cursor: pointer;
       background-color: rgb(169, 204, 12);
@@ -124,7 +129,23 @@
         <a class="nav-link" href="#Catalogue"> Catalogue</a>
         <a class="nav-link" href="#Order"> Order Now</a>
         <a class="nav-link" href="#About"> About</a>
-       
+
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
       </div>
 
 
@@ -245,7 +266,7 @@
 
 
 
-      <div class="row row-cols-4" >
+      <div class="row row-cols-4">
 
         <div class="card" style="width: 18rem;">
           <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
@@ -304,8 +325,13 @@
           <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
+            <p class="card-text">No matter your goals, Atomic Habits
+              offers a proven framework for improving--every day.
+              James Clear, one of the world's leading experts on
+              habit formation, reveals practical strategies that
+              will teach you exactly how to form good habits,
+              break bad ones, and master the tiny behaviors
+              that lead to remarkable results.</p>
             <a href="#" class="btn btn-primary">View more</a>
           </div>
         </div>
@@ -314,19 +340,26 @@
           <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
+            <p class="card-text">Delivered with warmth, clarity, and humor,
+              this brief work is the closest Einstein ever came to writing
+              an autobiography. Although a very personal account, it is
+              concerned solely with the development of his ideas,
+              saying little about his private life or about the
+              world-shaking events through which he lived.
+              Includes parallel German and English texts</p>
             <a href="#" class="btn btn-primary">View more</a>
           </div>
         </div>
 
 
-        <div  class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem;">
           <img src="img/buku sherlock.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Vumvumvoq</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
+            <p class="card-text">No home library is complete without the classics!
+              The Adventures of Sherlock Holmes and Other Stories brings
+              together the essential works from Arthur Conan Doyle in an
+              elegant, leather-bound, omnibus edition—a keepsake to be read and treasured.</p>
             <a href="#" class="btn btn-primary">View more</a>
           </div>
         </div>
@@ -335,25 +368,47 @@
     </div>
   </div>
   </div>
-<div id="Order"></div>
-  <div class="card text-white bg-dark" >
+
+
+  <div id="Order" class="card text-white bg-custom-3">
     <h3 class="card-header" style="font-family: Verdana;">How to Order</h3>
 
-    <div class="card text-white bg-dark" style="text-align: center;font-size: larger;
+    <p style="text-align: center;font-size: larger;margin-top: 15px;
         font-family: sans-serif;">
-      If you don't find the <br>
-      book you're looking for,<br>
-      you can ask us on Instagram's <br>or message us
-      through <a
-        href="https://api.whatsapp.com/send?phone=6282117557373&text=Halo%20Kak,%20Apakah%20buku%20...%20tersedia%20?">
-        WhatsApp</a>
-    </div>
 
-      <div id="About" class="col text-center" style="background-color: green;margin: top 30px;">
-        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-          <button type="button" class="btn btn-success" >I WANT TO SHOP NOW!!!</button>
-         
-       
+    <table style="width:100%" class="col text-center">
+      <tr>
+        <th>Steps</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td>1. Stroll around our website to
+          look for best books.<br>
+          2. Click the button below and we'll direct you
+          to <br> our customer service<br>
+          3. Chat with our admin and feel free to ask!
+        </td>
+        <td> If you don't find the <br>
+          book you're looking for,<br>
+          you can ask us on Instagram's <br>or message us
+          through <a
+            href="https://api.whatsapp.com/send?phone=6282117557373&text=Halo%20Kak,%20Apakah%20buku%20...%20tersedia%20?"
+            style="color:rgb(251, 255, 0);">
+            WhatsApp</a></td>
+      </tr>
+
+    </table>
+    </p>
+
+    <div id="About" class="col text-center bg-dark;">
+
+      <button type="button" class="btn btn-secondary">
+        <a href="https://api.whatsapp.com/send?phone=6282117557373&text=Halo%20Kak,%20Saya%20ingin%20...%20beli%20buku%20..."
+          style="color:mediumturquoise;">
+          <h1>I WANT TO PURCHASE NOW!</h1>
+        </a></button>
+
+
 
 
 
@@ -383,7 +438,7 @@
 
       <div id="Contact" class="container-fluid"
         style="background-color: black;font-family: 'Times New Roman', Times, serif;">
-        <h2 style="color: coral;">Contact</h2>
+        <h2 style="color: rgb(255, 159, 80);">Contact</h2>
         <P> Instagram @awbookstore <BR>
           Whatsapp +6282117557373<BR>
           LINE @93ENT9Dz <br>
@@ -391,6 +446,20 @@
         </P>
       </div>
 
+
+      <div class="container-fluid" style="background-color: black;font-family: 'Times New Roman', Times, serif;">
+        <h2 style="color: rgb(255, 194, 80);">References</h2>
+        <P> Book Images:<br>
+          https://www.amazon.com/Adventures-Sherlock-Holmes-Other-Stories/dp/1607102110 <BR>
+          https://www.goodreads.com/book/show/499091.Autobiographical_Notes<BR>
+          https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299<br>
+          Logo: made by me using Canva.<br>
+          Website used for content:<br>
+          Bootstrap.com <br>
+          W3schools.com <br>
+          <br>
+        </P>
+      </div>
 
     </div>
 
